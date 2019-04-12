@@ -5,13 +5,14 @@
  */
 package bus.station;
 import java.io.*;
+import java.util.Scanner;
 /**
  *
  * @author Nayera Hatem
  */
 public class Manager extends User implements Admin {
     private int index;
-    
+    private String[] Trips_Data = new String[100];
     
   
     public Manager (String ID, String name, int Pass)
@@ -73,33 +74,34 @@ public class Manager extends User implements Admin {
         fw.write(System.getProperty( "line.separator" ));
         fw.close(); 
     }
-
+    
 
     public void Remove_Trips(String Source , String Destination,String Time) throws IOException 
     {
-     File inputFile = new File("Trips.txt");
-     File tempFile = new File("temp.txt");
-
-    BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-    BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
-
-    String lineToRemove = "Source :"+ Source +"     "+"Destination :"+ Destination +"     "+ "Departs At :" +Time;;
-    String currentLine;
-
-    while((currentLine = reader.readLine()) != null) 
-    {
-    // trim newline when comparing with lineToRemove
-    String trimmedLine = currentLine.trim();
-    if(trimmedLine.equals(lineToRemove)) continue;
-    writer.write(currentLine + System.getProperty("line.separator"));
+      int i = 0;
+      Scanner scanner = new Scanner(new File("Trips.txt"));  
+      while (scanner.hasNextLine()) {  
+      Trips_Data[i] = scanner.nextLine();
+      //System.out.println(Trips_Data[i]);
+      i = i + 1;
     }
-    writer.close(); 
-    reader.close(); 
-    boolean a =tempFile.renameTo(inputFile);
-
+     FileWriter fw=new FileWriter("Trips.txt");
+     String str = "Source :"+ Source +"     "+"Destination :"+ Destination +"     "+ "Departs At :" +Time; 
+     i = 0;
+     for (int x =0;x<Trips_Data.length;x++)
+     {
+     if (Trips_Data[i] == null)
+         break;
+     if (!str.equals(Trips_Data[i]))
+     {
+          fw.write(Trips_Data[i]);
+          fw.write(System.getProperty( "line.separator" ));
+          System.out.println(Trips_Data[i]);
+     }
+     i = i + 1;
+     }
+     fw.close(); 
     }
- 
-    
 
        public void Display_User()
      {
