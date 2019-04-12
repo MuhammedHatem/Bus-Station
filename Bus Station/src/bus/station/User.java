@@ -11,10 +11,10 @@ package bus.station;
  */
 public abstract class User {
     String ID ;
-    int Pass ;
+    int  Pass ;
     String name ;
 
-    abstract String getID() ;
+    abstract  String getID() ;
     
 
      abstract void setID(String ID);

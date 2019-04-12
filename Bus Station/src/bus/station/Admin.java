@@ -4,15 +4,16 @@
  * and open the template in the editor.
  */
 package bus.station;
+import java.io.*;
 
 /**
  *
  * @author Nayera Hatem
  */
 public interface Admin {
-    void Add_Trips();
+    void Add_Trips (String Source , String Destination,String Time)throws IOException;
     
-    void Remove_Trips ();
+    void Remove_Trips () throws IOException;
     
     void Manage_Trips(Trips trip,Employee driver);
     

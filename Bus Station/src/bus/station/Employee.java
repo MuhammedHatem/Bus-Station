@@ -55,11 +55,46 @@ public class Employee extends User{
         this.Assigned_TripsID[i] = Assigned_TripsID;
     }
     
-    
-    public static void Display()
-     {
-      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void Add_The_User() throws IOException
+    {
+        String str = "User`s ID :"+ ID + "     "+"User`s Name :"+name+"     "+"User`s Password :"+Pass +"     "+"User`s Position :"+" "+"Driver";
+        // attach a file to FileWriter  
+        FileWriter fw=new FileWriter("Drivers.txt",true); 
+        for (int i = 0; i < str.length(); i++) 
+            fw.write(str.charAt(i)); 
+        fw.write(System.getProperty( "line.separator" ));
+        fw.close(); 
     }
+    
+     public void Display_User()
+     {
+         String str = "User`s ID :"+ ID + "     "+"User`s Name :"+name+"     "+"User`s Password :"+Pass +"     "+"User`s Position :"+" "+"Driver";
+         System.out.println(str);
+     }
+    
+    
+    public void Display_ALL() throws IOException
+     {
+      int ch; 
+  
+        // check if File exists or not 
+        FileReader fr=null; 
+        try
+        { 
+            fr = new FileReader("Drivers.txt"); 
+        } 
+        catch (FileNotFoundException fe) 
+        { 
+            System.out.println("File not found"); 
+        } 
+  
+        // read from FileReader till the end of file 
+        while ((ch=fr.read())!=-1) 
+            System.out.print((char)ch); 
+  
+        // close the file 
+        fr.close(); 
+     }
     
     
 }
