@@ -27,7 +27,9 @@ public class BusStation {
         Mini_Bus mb = new Mini_Bus();
         Mini_Bus mb1 = new Mini_Bus();
         Manager number_1 = new Manager("MN121","Mohammed",1234);
-        number_1.Add_Trips("Alexandria","Cairo","3:30");
+       // number_1.Add_Trips("Alex","okolhuma","3:30");
+        //number_1.Add_Trips("Alexa","okolhuma","3:30");
+        //number_1.Add_Trips("Alexb","okolhuma","3:30");
         Passenger p1 = new Passenger("IP124","Ahmed",1234);
         //p1.Add_The_User();
         Passenger p2 = new Passenger("IP1234","Ahmead",12234);
@@ -37,7 +39,7 @@ public class BusStation {
         //p1.Display_User();
         //p2.Display_User();
         p1.Display_ALL();
-        
+        number_1.Remove_Trips("Alexa","okolhuma","3:30");
     }
     
 }

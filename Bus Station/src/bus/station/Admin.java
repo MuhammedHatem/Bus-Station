@@ -13,7 +13,7 @@ import java.io.*;
 public interface Admin {
     void Add_Trips (String Source , String Destination,String Time)throws IOException;
     
-    void Remove_Trips () throws IOException;
+    void Remove_Trips (String Source , String Destination,String Time) throws IOException;
     
     void Manage_Trips(Trips trip,Employee driver);
     

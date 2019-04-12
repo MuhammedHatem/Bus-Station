@@ -75,9 +75,31 @@ public class Manager extends User implements Admin {
     }
 
 
-    public void Remove_Trips() throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void Remove_Trips(String Source , String Destination,String Time) throws IOException 
+    {
+     File inputFile = new File("Trips.txt");
+     File tempFile = new File("temp.txt");
+
+    BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+    BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+
+    String lineToRemove = "Source :"+ Source +"     "+"Destination :"+ Destination +"     "+ "Departs At :" +Time;;
+    String currentLine;
+
+    while((currentLine = reader.readLine()) != null) 
+    {
+    // trim newline when comparing with lineToRemove
+    String trimmedLine = currentLine.trim();
+    if(trimmedLine.equals(lineToRemove)) continue;
+    writer.write(currentLine + System.getProperty("line.separator"));
     }
+    writer.close(); 
+    reader.close(); 
+    boolean a =tempFile.renameTo(inputFile);
+
+    }
+ 
+    
 
        public void Display_User()
      {

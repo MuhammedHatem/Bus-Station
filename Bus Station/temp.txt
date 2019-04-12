@@ -1,3 +1,2 @@
 Source :Alex     Destination :okolhuma     Departs At :3:30
-Source :Alexa     Destination :okolhuma     Departs At :3:30
 Source :Alexb     Destination :okolhuma     Departs At :3:30
