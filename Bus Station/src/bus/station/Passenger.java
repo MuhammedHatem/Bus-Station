@@ -1,13 +1,14 @@
 
 package bus.station;
-
+import java.io.*;
 
 public class Passenger extends User{
     
         private String Source ;
         private String Destination ;
-        private int ROO ; // round trip or one way trip
-        
+        private static int ROO ; // round trip => 0 , one way trip => 1
+        private static int V_T ;
+         
         public Passenger(String ID, String name, int Pass){
         setID(ID);
         setName(name);
@@ -41,13 +42,34 @@ public class Passenger extends User{
         this.name = name;
     }
     
-    public void Book_Ticket(String source , String Destination , int Trip_type)
+    public void Book_Ticket(String source , String Destination , String Trip_type , Trips trip ,String Transportation_Vehicle)
     {
         this.Source = Source;
-    
         this.Destination = Destination;
-
-        this.ROO = ROO;
+        if (Trip_type.equals("one way trip"))
+        this.ROO = 0;
+        else if(Trip_type.equals("round trip"))
+        this.ROO = 1;
+         if (Transportation_Vehicle.equals("Bus"))
+             setV_T(0);
+         if (Transportation_Vehicle.equals("Mini Bus"))
+             setV_T(1);
+         if (Transportation_Vehicle.equals("Car"))
+             setV_T(2);
+         int x = trip.getAvilable_Seat();
+         trip.setAvilable_Seat(x-1);
+         //if(Trip_Flavor.equals("non stop"))
+           //  trip.setFlavors(0); 
+         //if(Trip_Flavor.equals("non stop"))
+           //  trip.setFlavors(1);
+         //if(Trip_Flavor.equals("non stop"))
+             //trip.setFlavors(2);
+    }
+    
+    public void Cancellation(Trips trip)
+    {
+         int x = trip.getAvilable_Seat();
+         trip.setAvilable_Seat(x+1);
     }
 
     public String getSource() {
@@ -58,10 +80,17 @@ public class Passenger extends User{
         return Destination;
     }
 
-    public int getROO() {
+    public static int getROO() {
         return ROO;
     }
 
+    public static int getV_T() {
+        return V_T;
+    }
 
-    
+    public static void setV_T(int V_T) {
+        Passenger.V_T = V_T;
+    }
+
+
 }

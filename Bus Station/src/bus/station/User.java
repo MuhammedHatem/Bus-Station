@@ -25,9 +25,8 @@ public abstract class User {
 
     abstract void setPass(int Pass);
  
-    
 
-     abstract String getName();
+    abstract String getName();
       
 
     abstract void setName(String name) ;
